@@ -1,15 +1,17 @@
 from collections import Counter
 
+
 def check_if_positive_number(arr):
     try:
         return all((n > 0) for n in arr)
     except TypeError:
         return False
 
+
 def find_duplicate(nums):
-    if nums == None or len(nums) < 2:
+    if nums is None or len(nums) < 2:
         return False
-    elif check_if_positive_number(nums) == False:
+    elif check_if_positive_number(nums) is False:
         return False
     elif Counter(nums).most_common()[0][1] == 1:
         return False
