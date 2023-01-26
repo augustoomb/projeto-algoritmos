@@ -1,9 +1,9 @@
 # remover acentos
-from unidecode import unidecode
+# from unidecode import unidecode
 
 
-def remove_accents(str):
-    return unidecode(str)
+# def remove_accents(str):
+#     return unidecode(str)
 
 
 def str_to_list(str):
@@ -15,8 +15,9 @@ def str_to_lower_case(str):
 
 
 def mount_list(str):
-    str_without_accents = remove_accents(str)
-    str_lower_case = str_to_lower_case(str_without_accents)
+    # str_without_accents = remove_accents(str)
+    # str_lower_case = str_to_lower_case(str_without_accents)
+    str_lower_case = str_to_lower_case(str)
     list = str_to_list(str_lower_case)
     return list
 
