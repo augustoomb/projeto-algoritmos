@@ -1,36 +1,21 @@
-# Baseado em: https://stackoverflow.com/questions/48017422
-# /implementing-quick-sort-in-python
-
-def quick_sort(arr):
-    tam_arr = len(arr)
-    if tam_arr <= 1:
-        return arr
-    meio_do_arr = tam_arr // 2
-    pivot = arr[meio_do_arr]
-    esq = [x for x in arr if x < pivot]
-    dir = [x for x in arr if x > pivot]
-    meio = [x for x in arr if x == pivot]
-    return quick_sort(esq) + meio + quick_sort(dir)
-
+from collections import Counter
 
 def check_if_positive_number(arr):
-    return all((isinstance(n, int) and n > 0) for n in arr)
-
-
-def find_duplicate(nums):
-    if check_if_positive_number(nums) is False:
+    try:
+        return all((n > 0) for n in arr)
+    except TypeError:
         return False
 
-    sorted_list = quick_sort(nums)
+def find_duplicate(nums):
+    if nums == None or len(nums) < 2:
+        return False
+    elif check_if_positive_number(nums) == False:
+        return False
+    elif Counter(nums).most_common()[0][1] == 1:
+        return False
+    return Counter(nums).most_common()[0][0]
 
-    repeated_number = False
 
-    for index in range(len(sorted_list) - 1):
-        if sorted_list[index] == sorted_list[index + 1]:
-            repeated_number = sorted_list[index]
-
-    return repeated_number
-
-# nums = [1, 3, 4, 2, -2]
-# print(find_duplicate(''))
-# print(check_if_positive_number(nums))
+# nums = [1, 3, 4, 2, 5]
+# print(find_duplicate(nums))
+# find_duplicate(nums)
